@@ -1,0 +1,8 @@
+SWEEP sweep_byzantine_noniid_nnm_mnist  (byzantine.py, base byz_base_mnist.yaml), final test_acc
+                               mean              median              trmean              geomed                krum          multi_krum      cclip(tau=1.0)
+none                         0.8863              0.8738              0.8766              0.8780              0.8151              0.8477              0.8864
+signflip                     0.6865              0.5849              0.6085              0.6027              0.5664              0.5874              0.6865
+ipm(tau=5.0)                 0.4641              0.8713              0.8713              0.8715              0.8712              0.8713              0.5553
+alie(tau=1.5)                0.8806              0.8729              0.8732              0.8727              0.8712              0.8726              0.8803
+minmax                       0.8678              0.8710              0.8711              0.8707              0.8709              0.8716              0.8678
+minsum                       0.8655              0.8531              0.8605              0.8648              0.8497              0.8619              0.8654

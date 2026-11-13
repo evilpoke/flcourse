@@ -1,0 +1,21 @@
+# FedAvg on CIFAR-10 (170 MB download). A GPU (e.g. Colab) is recommended, a CPU works too.
+name: fedavg_cifar10
+seed: 0
+data:
+  dataset: cifar10
+  partition: dirichlet
+  alpha: 0.5
+model:
+  name: cnn                  # try cnn_large or resnet18 on a GPU
+fl:
+  num_clients: 20
+  clients_per_round: 10
+  rounds: 5
+  upload: model
+client:
+  local_epochs: 2
+  batch_size: 32
+  lr: 0.05
+  momentum: 0.9
+aggregator:
+  name: mean

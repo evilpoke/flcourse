@@ -1,0 +1,22 @@
+# FedSGD: clients upload ONE mini-batch gradient, the server takes the SGD step.
+# Switch any other config to this mode with:  --set fl.upload=gradient
+name: fedsgd_mnist
+seed: 0
+data:
+  dataset: mnist
+  partition: iid
+model:
+  name: mlp
+fl:
+  num_clients: 20
+  clients_per_round: 10
+  rounds: 200
+  upload: gradient           # w <- w - server_lr * AGG(gradients)
+  server_lr: 0.1
+client:
+  batch_size: 64
+  gradient_batches: 1        # gradient over this many local mini-batches (-1 = all local data)
+aggregator:
+  name: mean
+eval:
+  every: 10

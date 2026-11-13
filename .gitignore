@@ -1,0 +1,24 @@
+# python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# datasets (downloaded by experiments/download_data.py or on first use) -- never committed
+/data/
+MNIST/
+FashionMNIST/
+cifar-10-batches-py/
+cifar-10-python.tar.gz
+*-ubyte
+*-ubyte.gz
+
+# outputs of your own runs and build artifacts
+/results/
+/dist/
+
+# demo results: figures (*.png), report.txt, metrics.json, clients.csv, config.yaml are committed;
+# the raw benchmark records and the individual sweep sub-runs are large and are not
+demo_results/**/bench.json
+demo_results/**/runs/

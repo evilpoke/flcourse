@@ -1,0 +1,12 @@
+# FLTrust: the server trains on 100 clean samples and trusts clients by cosine similarity.
+name: byz_ipm_fltrust
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: mlp}
+fl: {num_clients: 20, clients_per_round: 20, rounds: 20, upload: delta}
+client: {local_steps: 20, batch_size: 32, lr: 0.05}
+server: {root_dataset_size: 100}
+attack:
+  num_byzantine: 6
+  vector: {name: ipm, tau: 5.0}
+aggregator: {name: fltrust}

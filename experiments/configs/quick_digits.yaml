@@ -1,0 +1,21 @@
+# Smallest possible run: offline dataset (bundled with scikit-learn), ~20 seconds on a laptop CPU.
+name: quick_digits
+seed: 0
+device: auto
+data:
+  dataset: digits
+  partition: dirichlet
+  alpha: 0.5
+model:
+  name: mlp
+fl:
+  num_clients: 10
+  clients_per_round: 5
+  rounds: 15
+  upload: model
+client:
+  local_epochs: 2
+  batch_size: 16
+  lr: 0.05
+aggregator:
+  name: mean

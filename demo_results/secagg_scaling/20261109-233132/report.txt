@@ -1,0 +1,30 @@
+EXPERIMENT  secagg_scaling
+output      demo_results/secagg_scaling/20261109-233132
+device      cpu (4 threads)
+wall clock  32.87 s (sequential simulation)
+
+rows: 15
+
+SCALING (one aggregation per row)
+protocol                                                    n  dropped  upload/client  download/client  client compute  server compute  est. latency  max error
+secagg(reconstruction_threshold=0.5)                        5        0       83.15 kB          4.71 kB          9.2 ms         24.9 ms      101.4 ms    2.5e-06
+secagg(reconstruction_threshold=0.5)                       10        1       86.75 kB          9.94 kB         17.7 ms        164.0 ms      253.0 ms    2.1e-06
+secagg(reconstruction_threshold=0.5)                       20        2       93.69 kB         20.39 kB         56.0 ms          1.05 s        1.19 s    1.6e-06
+secagg(reconstruction_threshold=0.5)                       30        3      100.62 kB         30.84 kB        111.5 ms          3.12 s        3.33 s    1.3e-06
+secagg(reconstruction_threshold=0.5)                       40        4      107.55 kB         41.29 kB        178.5 ms          6.72 s        7.00 s    1.2e-06
+secagg+(num_shares=7, reconstruction_threshold=4)           5        0       83.15 kB          4.71 kB         10.5 ms         27.5 ms      105.3 ms    2.7e-06
+secagg+(num_shares=7, reconstruction_threshold=4)          10        1       84.75 kB          6.80 kB         15.4 ms        102.7 ms      187.5 ms    2.0e-06
+secagg+(num_shares=7, reconstruction_threshold=4)          20        2       85.03 kB          6.80 kB         13.1 ms        188.4 ms      271.2 ms    1.5e-06
+secagg+(num_shares=7, reconstruction_threshold=4)          30        3       85.03 kB          6.80 kB         17.8 ms        263.3 ms      355.1 ms    1.2e-06
+secagg+(num_shares=7, reconstruction_threshold=4)          40        4       85.03 kB          6.80 kB         16.4 ms        415.6 ms      502.9 ms    9.7e-07
+lightsecagg(privacy_threshold=0.3, dropout_tolerance=0.2)   5        0      280.33 kB        161.20 kB         30.6 ms         15.1 ms      296.0 ms    2.6e-06
+lightsecagg(privacy_threshold=0.3, dropout_tolerance=0.2)  10        1      240.48 kB        146.43 kB         32.3 ms         18.8 ms      268.0 ms    1.9e-06
+lightsecagg(privacy_threshold=0.3, dropout_tolerance=0.2)  20        2      240.77 kB        156.89 kB         59.7 ms         34.6 ms      313.8 ms    1.5e-06
+lightsecagg(privacy_threshold=0.3, dropout_tolerance=0.2)  30        3      241.14 kB        162.09 kB        112.2 ms         49.4 ms      383.0 ms    1.1e-06
+lightsecagg(privacy_threshold=0.3, dropout_tolerance=0.2)  40        4      241.35 kB        165.81 kB        131.9 ms         66.3 ms      419.9 ms    9.9e-07
+
+figure: scaling.png
+
+
+
+figures: 

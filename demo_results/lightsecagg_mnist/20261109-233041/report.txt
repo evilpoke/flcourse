@@ -1,0 +1,49 @@
+EXPERIMENT  lightsecagg_mnist
+output      demo_results/lightsecagg_mnist/20261109-233041
+device      cpu (4 threads)
+wall clock  50.85 s (sequential simulation)
+
+FINAL METRICS (last evaluated round)
+  round            15
+  test_loss        0.0466
+  test_acc         0.9844
+  survivors        9
+  secagg_max_error 0.0000
+  elapsed_s        49.9683
+
+protocol: lightsecagg
+
+parameters: LightSecAgg(LightSecAggParams(privacy_threshold=0.3, dropout_tolerance=0.2, clipping_range=1.0, quantization_range=4194304, prime=2147483647))
+last round: {'T': 3, 'U': 8, 'N': 10, 'survivors': 9, 'responses': 9, 'piece_len': 12342}
+max |secure mean - plain mean| over the last round: 2.91e-07 (quantisation step = 4.8e-07)
+
+COMMUNICATION   (total 210.74 MB over 15 round(s))
+label                                          direction       msgs  total      per round  per msg  
+----------------------------------------------------------------------------------------------------
+download: global model                         server->client   150   37.02 MB    2.47 MB  246.82 kB
+lightsecagg/0 keys: public key                 client->server   150   32.25 kB    2.15 kB      215 B
+lightsecagg/0 keys: public keys                server->client   150  324.00 kB   21.60 kB    2.16 kB
+lightsecagg/0 setup: config                    server->server    15       90 B        6 B        6 B
+lightsecagg/1 coded mask pieces (down)         server->client   150   66.69 MB    4.45 MB  444.57 kB
+lightsecagg/1 coded mask pieces (up)           client->server   150   66.69 MB    4.45 MB  444.57 kB
+lightsecagg/2 masked input                     client->server   135   33.32 MB    2.22 MB  246.82 kB
+lightsecagg/3 recovery: aggregated coded mask  client->server   135    6.66 MB  444.31 kB   49.37 kB
+lightsecagg/3 recovery: survivor list          server->client   135    1.22 kB       81 B        9 B
+
+COMPUTATION   ('avg/round' = average over parties, 'parallel/round' = max over parties = concurrent clients)
+label                                  who     calls  total     per call  avg/round  parallel/round
+---------------------------------------------------------------------------------------------------
+client: local update                   client    150   29.25 s  195.0 ms   195.0 ms        218.2 ms
+lightsecagg/0 keys [client]            client    150   29.2 ms    194 us     194 us          362 us
+lightsecagg/0 setup [server]           server     15    3.8 ms    253 us     253 us          253 us
+lightsecagg/1 decrypt pieces [client]  client    150  699.3 ms    4.7 ms     4.7 ms          5.3 ms
+lightsecagg/1 encode masks [client]    client    150   10.34 s   68.9 ms    68.9 ms         76.8 ms
+lightsecagg/2 masked input [client]    client    135  223.6 ms    1.7 ms     1.7 ms          1.9 ms
+lightsecagg/2 masked input [server]    server    135   34.9 ms    259 us     2.3 ms          2.3 ms
+lightsecagg/3 decode [server]          server     15  868.1 ms   57.9 ms    57.9 ms         57.9 ms
+lightsecagg/3 recovery [client]        client    135   62.1 ms    460 us     460 us          538 us
+server: evaluate                       server     15    3.17 s  211.2 ms   211.2 ms        211.2 ms
+
+ESTIMATED ROUND LATENCY with concurrent clients (uplink 10 Mbit/s, downlink 50 Mbit/s): compute 574.8 ms + communication 703.8 ms = 1.28 s per round
+
+figures: convergence.png, communication.png, computation.png

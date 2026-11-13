@@ -1,0 +1,17 @@
+# Gradient inversion (DLG/iDLG) on the individual upload and on the n-client aggregate,
+# without protection and under local or central DP.
+#   python experiments/privacy_attacks.py --config experiments/configs/privacy_attacks_mnist.yaml
+#   ... --set privacy.dp_mode=central      # same sigmas, server-side noise instead
+name: privacy_attacks_mnist
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: dlg_lenet}           # sigmoid LeNet of the DLG paper
+fl: {num_clients: 10, clients_per_round: 10, rounds: 1, upload: gradient}
+client: {batch_size: 1}
+privacy:
+  target_client: 0
+  iterations: 30                   # L-BFGS steps of the inversion (x 20 inner iterations)
+  dp_mode: local                   # none | local | central
+  dp_clip: 20.0                    # C: clip norm (the gradient norm is ~11 -> no clipping)
+  dp_noise_multipliers: [0.001, 0.01, 0.1]   # noise std = sigma * C; one column per sigma
+  delta: 1.0e-5                    # for the epsilon captions

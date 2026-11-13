@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flcourse"
+version = "0.1.0"
+description = "A small, readable federated learning framework for teaching: robust aggregation, attacks, DP and secure aggregation (SecAgg, SecAgg+, LightSecAgg)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "numpy>=1.24",
+    "torch>=2.0",
+    "torchvision>=0.15",
+    "pyyaml>=6.0",
+    "matplotlib>=3.7",
+    "cryptography>=41",
+    "pycryptodome>=3.18",
+    "galois>=0.3",
+    "scikit-learn>=1.2",
+    "scipy>=1.9",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+include = ["flcourse*", "experiments*"]
+
+[tool.setuptools.package-data]
+"flcourse.secagg.flwr" = ["LICENSE-APACHE-2.0.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

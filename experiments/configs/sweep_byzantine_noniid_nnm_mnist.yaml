@@ -1,0 +1,28 @@
+# Same setting as sweep_byzantine_noniid_mnist.yaml, but every rule is preceded by Nearest Neighbour
+# Mixing (NNM, Allouah et al. 2023), a pre-aggregator designed for heterogeneous (non-IID) clients.
+#   python experiments/sweep.py --config experiments/configs/sweep_byzantine_noniid_nnm_mnist.yaml
+name: sweep_byzantine_noniid_nnm_mnist
+experiment: byzantine
+base_config: byz_base_mnist.yaml
+metric: test_acc
+overrides:
+  fl: {rounds: 15}
+  data: {partition: dirichlet, alpha: 0.3}
+  attack: {num_byzantine: 6, omniscient: true}
+  pre_aggregators: [{name: nnm}]       # f = attack.num_byzantine
+grid:
+  attack.vector:
+    - null
+    - {name: sign_flipping}
+    - {name: ipm, tau: 5.0}
+    - {name: alie, tau: 1.5}
+    - {name: minmax}
+    - {name: minsum}
+  aggregator:
+    - {name: mean}
+    - {name: median}
+    - {name: trimmed_mean}
+    - {name: geometric_median}
+    - {name: krum}
+    - {name: multi_krum}
+    - {name: centered_clipping, tau: 1.0}

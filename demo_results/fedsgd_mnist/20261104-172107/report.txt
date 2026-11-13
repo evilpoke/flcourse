@@ -1,0 +1,27 @@
+EXPERIMENT  fedsgd_mnist
+output      demo_results/fedsgd_mnist/20261104-172107
+device      cpu (4 threads)
+wall clock  12.37 s (sequential simulation)
+
+FINAL METRICS (last evaluated round)
+  round            200
+  test_loss        0.2546
+  test_acc         0.9250
+  elapsed_s        11.0429
+
+COMMUNICATION   (total 3.19 GB over 200 round(s))
+label                   direction       msgs  total    per round  per msg  
+---------------------------------------------------------------------------
+download: global model  server->client  2000  1.59 GB    7.97 MB  796.84 kB
+upload: gradient        client->server  2000  1.59 GB    7.97 MB  796.84 kB
+
+COMPUTATION   ('avg/round' = average over parties, 'parallel/round' = max over parties = concurrent clients)
+label                 who     calls  total     per call  avg/round  parallel/round
+----------------------------------------------------------------------------------
+client: local update  client   2000    8.32 s    4.2 ms     4.2 ms          6.3 ms
+server: aggregate     server    200  736.1 ms    3.7 ms     3.7 ms          3.7 ms
+server: evaluate      server     20    1.48 s   74.2 ms    74.2 ms         74.2 ms
+
+ESTIMATED ROUND LATENCY with concurrent clients (uplink 10 Mbit/s, downlink 50 Mbit/s): compute 17.4 ms + communication 765.0 ms = 782.4 ms per round
+
+figures: convergence.png, communication.png, computation.png

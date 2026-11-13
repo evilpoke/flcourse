@@ -1,0 +1,26 @@
+# Base setting for the Byzantine experiments (also used by sweep_byzantine_mnist.yaml):
+# 20 clients, all participate every round, 4 of them are Byzantine and collude.
+name: byz_base_mnist
+seed: 0
+data:
+  dataset: mnist
+  partition: iid
+model:
+  name: mlp
+fl:
+  num_clients: 20
+  clients_per_round: 20
+  rounds: 20
+  upload: delta              # robust rules compare update directions
+  server_lr: 1.0
+client:
+  local_steps: 20            # 20 local SGD steps per round
+  batch_size: 32
+  lr: 0.05
+aggregator:
+  name: mean
+attack:
+  num_byzantine: 4
+  data: null                 # null | label_flip | backdoor
+  vector: null               # null | sign_flipping | ipm | alie | gaussian | mimic | inf | zero | scaling | minmax | minsum
+  omniscient: false

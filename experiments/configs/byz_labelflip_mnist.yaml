@@ -1,0 +1,12 @@
+# Data poisoning: 6 of 20 clients train on flipped labels (y -> 9 - y). Coordinate-wise median.
+name: byz_labelflip_median
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: mlp}
+fl: {num_clients: 20, clients_per_round: 20, rounds: 20, upload: delta}
+client: {local_steps: 20, batch_size: 32, lr: 0.05}
+attack:
+  num_byzantine: 6
+  data: label_flip
+  vector: null               # the attackers just send what they trained
+aggregator: {name: median}

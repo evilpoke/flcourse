@@ -1,0 +1,21 @@
+# LightSecAgg with BOTH dropout filters of the protocol (Algorithm 1 of So et al. 2022):
+#   filter 1: clients that go offline before uploading their masked model
+#             -> the server announces the survivors U_1 (the clients whose masked model arrived)
+#   filter 2: survivors in U_1 that go offline before sending their aggregated encoded mask
+#             -> the server decodes the aggregate mask from any U of the remaining messages
+# Works as long as  |U_1| >= U  and at least U recovery messages arrive  (here exactly U = 7).
+name: lightsecagg_mnist_dropouts
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: lenet5}
+fl: {num_clients: 20, clients_per_round: 10, rounds: 15, upload: delta}
+client: {local_epochs: 1, batch_size: 32, lr: 0.05}
+aggregator: {name: mean}
+secagg:
+  protocol: lightsecagg
+  privacy_threshold: 0.3         # T = 3 of the N = 10 clients of a round may collude with the server
+  dropout_tolerance: 0.3         # D = 3  ->  U = N - D = 7 recovery messages are needed
+  clipping_range: 1.0
+  dropout_rate: 0.1              # filter 1: 1 of 10 clients drops before uploading -> |U_1| = 9
+  dropout_stage: masked_input
+  recovery_dropout_rate: 0.2     # filter 2: 2 of the 9 announced survivors never send their aggregate

@@ -1,0 +1,27 @@
+EXPERIMENT  fedavg_cifar10
+output      demo_results/fedavg_cifar10/20261104-175008
+device      cpu (4 threads)
+wall clock  3.8 min (sequential simulation)
+
+FINAL METRICS (last evaluated round)
+  round            30
+  test_loss        1.4939
+  test_acc         0.5110
+  elapsed_s        229.2843
+
+COMMUNICATION   (total 328.50 MB over 30 round(s))
+label                   direction       msgs  total      per round  per msg  
+-----------------------------------------------------------------------------
+download: global model  server->client   300  164.25 MB    5.47 MB  547.50 kB
+upload: model           client->server   300  164.25 MB    5.47 MB  547.50 kB
+
+COMPUTATION   ('avg/round' = average over parties, 'parallel/round' = max over parties = concurrent clients)
+label                 who     calls  total    per call  avg/round  parallel/round
+---------------------------------------------------------------------------------
+client: local update  client    300  3.3 min  659.6 ms   659.6 ms        997.6 ms
+server: aggregate     server     30  23.2 ms    774 us     774 us          774 us
+server: evaluate      server     30  27.44 s  914.8 ms   914.8 ms        914.8 ms
+
+ESTIMATED ROUND LATENCY with concurrent clients (uplink 10 Mbit/s, downlink 50 Mbit/s): compute 1.91 s + communication 525.6 ms = 2.44 s per round
+
+figures: convergence.png, communication.png, computation.png

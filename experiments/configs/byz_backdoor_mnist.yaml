@@ -1,0 +1,14 @@
+# Backdoor (BadNets trigger -> label 0) + model replacement (boosted update), 2 of 20 clients.
+# Plain averaging: high backdoor success rate. Try:  --set "pre_aggregators=[{name: clipping, c: 0.5}]"
+name: byz_backdoor_mean
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: mlp}
+fl: {num_clients: 20, clients_per_round: 10, rounds: 20, upload: delta}
+client: {local_steps: 20, batch_size: 32, lr: 0.05}
+attack:
+  num_byzantine: 2
+  data: backdoor
+  backdoor: {target_label: 0, fraction: 0.5, size: 4}
+  vector: {name: scaling, factor: 5.0}
+aggregator: {name: mean}

@@ -1,0 +1,27 @@
+# Harder setting: non-IID data (Dirichlet 0.3), 6 of 20 clients Byzantine, attackers see all
+# honest uploads (omniscient). Heterogeneity makes honest updates spread out -> more room to hide.
+#   python experiments/sweep.py --config experiments/configs/sweep_byzantine_noniid_mnist.yaml
+name: sweep_byzantine_noniid_mnist
+experiment: byzantine
+base_config: byz_base_mnist.yaml
+metric: test_acc
+overrides:
+  fl: {rounds: 15}
+  data: {partition: dirichlet, alpha: 0.3}
+  attack: {num_byzantine: 6, omniscient: true}
+grid:
+  attack.vector:
+    - null
+    - {name: sign_flipping}
+    - {name: ipm, tau: 5.0}
+    - {name: alie, tau: 1.5}
+    - {name: minmax}
+    - {name: minsum}
+  aggregator:
+    - {name: mean}
+    - {name: median}
+    - {name: trimmed_mean}
+    - {name: geometric_median}
+    - {name: krum}
+    - {name: multi_krum}
+    - {name: centered_clipping, tau: 1.0}

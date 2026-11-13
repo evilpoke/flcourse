@@ -1,0 +1,49 @@
+name: byz_ipm_fltrust
+seed: 0
+device: auto
+output_dir: demo_results
+backend: torch
+verbose: true
+data:
+  dataset: mnist
+  root: ./data
+  partition: iid
+  alpha: 0.5
+  shards_per_client: 2
+  min_samples_per_client: 10
+  max_train_samples: null
+  max_test_samples: null
+model:
+  name: mlp
+fl:
+  num_clients: 20
+  clients_per_round: 20
+  rounds: 20
+  upload: delta
+  server_lr: 1.0
+client:
+  local_epochs: 1
+  local_steps: 20
+  batch_size: 32
+  lr: 0.05
+  momentum: 0.0
+  weight_decay: 0.0
+  gradient_batches: 1
+aggregator:
+  name: fltrust
+pre_aggregators: []
+attack:
+  num_byzantine: 6
+  vector:
+    name: ipm
+    tau: 5.0
+dp: null
+secagg: null
+eval:
+  every: 1
+  batch_size: 1000
+network:
+  uplink_mbps: 10.0
+  downlink_mbps: 50.0
+server:
+  root_dataset_size: 100

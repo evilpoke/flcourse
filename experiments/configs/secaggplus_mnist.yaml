@@ -1,0 +1,15 @@
+# SecAgg+ (Bell et al. 2020): every client only talks to num_shares - 1 neighbours.
+name: secaggplus_mnist
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: lenet5}
+fl: {num_clients: 20, clients_per_round: 10, rounds: 15, upload: delta}
+client: {local_epochs: 1, batch_size: 32, lr: 0.05}
+aggregator: {name: mean}
+secagg:
+  protocol: secagg+
+  num_shares: 5                  # neighbourhood size incl. itself (odd)
+  reconstruction_threshold: 3
+  clipping_range: 1.0
+  dropout_rate: 0.1
+  dropout_stage: masked_input

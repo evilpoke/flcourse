@@ -1,0 +1,36 @@
+EXPERIMENT  byz_ipm_mean
+output      demo_results/byz_ipm_mean/20261104-172620
+device      cpu (4 threads)
+wall clock  8.90 s (sequential simulation)
+
+FINAL METRICS (last evaluated round)
+  round            20
+  test_loss        328.2845
+  test_acc         0.0958
+  deviation        7.5041
+  elapsed_s        8.2003
+
+attack: InnerProductManipulation(tau=5.0)
+data_attack: None
+aggregator: Average()
+pre_aggregators: []
+byzantine: [9, 11, 14, 16]
+
+COMMUNICATION   (total 701.22 MB over 20 round(s))
+label                   direction          msgs  total      per round  per msg  
+--------------------------------------------------------------------------------
+collusion/vector        client->colluders    80   63.75 MB    3.19 MB  796.84 kB
+download: global model     server->client   400  318.74 MB   15.94 MB  796.84 kB
+upload: delta              client->server   400  318.74 MB   15.94 MB  796.84 kB
+
+COMPUTATION   ('avg/round' = average over parties, 'parallel/round' = max over parties = concurrent clients)
+label                           who     calls  total     per call  avg/round  parallel/round
+--------------------------------------------------------------------------------------------
+attack: craft byzantine vector  client     20   12.2 ms    611 us     611 us          611 us
+client: local update            client    400    7.24 s   18.1 ms    18.1 ms         24.1 ms
+server: aggregate               server     20   41.6 ms    2.1 ms     2.1 ms          2.1 ms
+server: evaluate                server     20  402.5 ms   20.1 ms    20.1 ms         20.1 ms
+
+ESTIMATED ROUND LATENCY with concurrent clients (uplink 10 Mbit/s, downlink 50 Mbit/s): compute 46.9 ms + communication 1.40 s = 1.45 s per round
+
+figures: convergence.png, communication.png, computation.png

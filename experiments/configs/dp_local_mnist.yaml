@@ -1,0 +1,13 @@
+# Local DP: every client adds N(0, (sigma C)^2) itself -- no trust in the server needed, but the
+# noise in the average is sqrt(m) times larger than with central DP (compare dp_central_mnist.yaml).
+name: dp_local_mnist
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: logreg}
+fl: {num_clients: 200, clients_per_round: 50, rounds: 40, upload: delta}
+client: {local_steps: 10, batch_size: 32, lr: 0.1}
+dp:
+  mode: local
+  clip: 0.5
+  noise_multiplier: 1.0
+  delta: 1.0e-5

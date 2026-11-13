@@ -1,0 +1,27 @@
+EXPERIMENT  fedavg_mnist_dirichlet
+output      demo_results/fedavg_mnist_dirichlet/20261104-171943
+device      cpu (4 threads)
+wall clock  84.02 s (sequential simulation)
+
+FINAL METRICS (last evaluated round)
+  round            20
+  test_loss        0.1240
+  test_acc         0.9621
+  elapsed_s        83.3142
+
+COMMUNICATION   (total 169.39 MB over 20 round(s))
+label                   direction       msgs  total     per round  per msg  
+----------------------------------------------------------------------------
+download: global model  server->client   200  84.69 MB    4.23 MB  423.46 kB
+upload: model           client->server   200  84.69 MB    4.23 MB  423.46 kB
+
+COMPUTATION   ('avg/round' = average over parties, 'parallel/round' = max over parties = concurrent clients)
+label                 who     calls  total    per call  avg/round  parallel/round
+---------------------------------------------------------------------------------
+client: local update  client    200  69.58 s  347.9 ms   347.9 ms        569.3 ms
+server: aggregate     server     20  13.5 ms    673 us     673 us          673 us
+server: evaluate      server     20  13.31 s  665.5 ms   665.5 ms        665.5 ms
+
+ESTIMATED ROUND LATENCY with concurrent clients (uplink 10 Mbit/s, downlink 50 Mbit/s): compute 1.24 s + communication 406.5 ms = 1.64 s per round
+
+figures: convergence.png, communication.png, computation.png

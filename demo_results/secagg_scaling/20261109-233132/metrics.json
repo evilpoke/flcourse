@@ -1,0 +1,19 @@
+{
+ "summary": {
+  "name": "secagg_scaling",
+  "output_dir": "demo_results/secagg_scaling/20261109-233132",
+  "device": "cpu",
+  "final": {},
+  "total_communication_bits": 0,
+  "wall_clock_s": 32.86864185333252,
+  "estimated_round_latency": {
+   "compute_s": 0.0,
+   "comm_s": 0.0,
+   "total_s": 0.0,
+   "rounds": 0
+  },
+  "rows": 15
+ },
+ "global": [],
+ "clients": []
+}

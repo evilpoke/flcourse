@@ -1,0 +1,848 @@
+{
+ "fedavg_mnist_iid": {
+  "script": "fedavg",
+  "config": "experiments/configs/fedavg_mnist_iid.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 79.73530745506287,
+  "output_dir": "demo_results/fedavg_mnist_iid/20261104-171824",
+  "final": {
+   "round": 20,
+   "test_loss": 0.041959935665130614,
+   "test_acc": 0.9862,
+   "elapsed_s": 77.45305347442627
+  },
+  "summary": {
+   "name": "fedavg_mnist_iid",
+   "output_dir": "demo_results/fedavg_mnist_iid/20261104-171824",
+   "device": "cpu",
+   "total_communication_bits": 1355084800,
+   "wall_clock_s": 78.19843316078186,
+   "estimated_round_latency": {
+    "compute_s": 0.9911228722999113,
+    "comm_s": 0.40652544000000007,
+    "total_s": 1.3976483122999113,
+    "rounds": 20,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   }
+  }
+ },
+ "fedavg_mnist_dirichlet": {
+  "script": "fedavg",
+  "config": "experiments/configs/fedavg_mnist_dirichlet.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 84.03142142295837,
+  "output_dir": "demo_results/fedavg_mnist_dirichlet/20261104-171943",
+  "final": {
+   "round": 20,
+   "test_loss": 0.1240399990081787,
+   "test_acc": 0.9621,
+   "elapsed_s": 83.31417632102966
+  },
+  "summary": {
+   "name": "fedavg_mnist_dirichlet",
+   "output_dir": "demo_results/fedavg_mnist_dirichlet/20261104-171943",
+   "device": "cpu",
+   "total_communication_bits": 1355084800,
+   "wall_clock_s": 84.02037358283997,
+   "estimated_round_latency": {
+    "compute_s": 1.2354772789499748,
+    "comm_s": 0.40652544000000007,
+    "total_s": 1.6420027189499748,
+    "rounds": 20,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   }
+  }
+ },
+ "fedsgd_mnist": {
+  "script": "fedavg",
+  "config": "experiments/configs/fedsgd_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 12.418003559112549,
+  "output_dir": "demo_results/fedsgd_mnist/20261104-172107",
+  "final": {
+   "round": 200,
+   "test_loss": 0.25458357086181643,
+   "test_acc": 0.925,
+   "elapsed_s": 11.042930364608765
+  },
+  "summary": {
+   "name": "fedsgd_mnist",
+   "output_dir": "demo_results/fedsgd_mnist/20261104-172107",
+   "device": "cpu",
+   "total_communication_bits": 25498880000,
+   "wall_clock_s": 12.366169214248657,
+   "estimated_round_latency": {
+    "compute_s": 0.017444950584990692,
+    "comm_s": 0.7649664000000002,
+    "total_s": 0.7824113505849909,
+    "rounds": 200,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   }
+  }
+ },
+ "fedavg_cifar10": {
+  "script": "fedavg",
+  "config": "experiments/configs/fedavg_cifar10.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 231.64603805541992,
+  "output_dir": "demo_results/fedavg_cifar10/20261104-175008",
+  "final": {
+   "round": 30,
+   "test_loss": 1.4938997680664063,
+   "test_acc": 0.511,
+   "elapsed_s": 229.28428626060486
+  },
+  "summary": {
+   "name": "fedavg_cifar10",
+   "output_dir": "demo_results/fedavg_cifar10/20261104-175008",
+   "device": "cpu",
+   "total_communication_bits": 2627980800,
+   "wall_clock_s": 230.0959792137146,
+   "estimated_round_latency": {
+    "compute_s": 1.913154444600059,
+    "comm_s": 0.5255961599999998,
+    "total_s": 2.4387506046000587,
+    "rounds": 30,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   }
+  }
+ },
+ "byz_ipm_mean": {
+  "script": "byzantine",
+  "config": "experiments/configs/byz_ipm_mean.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 8.914011478424072,
+  "output_dir": "demo_results/byz_ipm_mean/20261104-172620",
+  "final": {
+   "round": 20,
+   "test_loss": 328.284453125,
+   "test_acc": 0.0958,
+   "deviation": 7.5040974617004395,
+   "elapsed_s": 8.200335264205933
+  },
+  "summary": {
+   "name": "byz_ipm_mean",
+   "output_dir": "demo_results/byz_ipm_mean/20261104-172620",
+   "device": "cpu",
+   "total_communication_bits": 5609753600,
+   "wall_clock_s": 8.896061182022095,
+   "estimated_round_latency": {
+    "compute_s": 0.04693795019989011,
+    "comm_s": 1.4024384000000003,
+    "total_s": 1.4493763501998904,
+    "rounds": 20,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "attack": "InnerProductManipulation(tau=5.0)",
+   "data_attack": null,
+   "aggregator": "Average()",
+   "pre_aggregators": "[]",
+   "byzantine": [
+    9,
+    11,
+    14,
+    16
+   ]
+  }
+ },
+ "byz_alie_trmean_nnm": {
+  "script": "byzantine",
+  "config": "experiments/configs/byz_alie_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 11.078877449035645,
+  "output_dir": "demo_results/byz_alie_trmean_nnm/20261104-172629",
+  "final": {
+   "round": 20,
+   "test_loss": 0.2726731300354004,
+   "test_acc": 0.9185,
+   "deviation": 9.085904473238315e-09,
+   "elapsed_s": 10.289920568466187
+  },
+  "summary": {
+   "name": "byz_alie_trmean_nnm",
+   "output_dir": "demo_results/byz_alie_trmean_nnm/20261104-172629",
+   "device": "cpu",
+   "total_communication_bits": 5609753600,
+   "wall_clock_s": 11.063677310943604,
+   "estimated_round_latency": {
+    "compute_s": 0.1453783560500142,
+    "comm_s": 1.4024384000000003,
+    "total_s": 1.5478167560500145,
+    "rounds": 20,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "attack": "ALittleIsEnough(tau=1.5)",
+   "data_attack": null,
+   "aggregator": "TrimmedMean(f=4)",
+   "pre_aggregators": "[NNM(f=4)]",
+   "byzantine": [
+    9,
+    11,
+    14,
+    16
+   ]
+  }
+ },
+ "byz_ipm_fltrust": {
+  "script": "byzantine",
+  "config": "experiments/configs/byz_fltrust_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 10.022047281265259,
+  "output_dir": "demo_results/byz_ipm_fltrust/20261104-172640",
+  "final": {
+   "round": 20,
+   "test_loss": 0.2374291861177695,
+   "test_acc": 0.9252525252525252,
+   "deviation": 0.1525392085313797,
+   "elapsed_s": 9.219787120819092
+  },
+  "summary": {
+   "name": "byz_ipm_fltrust",
+   "output_dir": "demo_results/byz_ipm_fltrust/20261104-172640",
+   "device": "cpu",
+   "total_communication_bits": 5864742400,
+   "wall_clock_s": 10.005664825439453,
+   "estimated_round_latency": {
+    "compute_s": 0.08379952494988174,
+    "comm_s": 1.4024384000000003,
+    "total_s": 1.486237924949882,
+    "rounds": 20,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "attack": "InnerProductManipulation(tau=5.0)",
+   "data_attack": null,
+   "aggregator": "FLTrust()",
+   "pre_aggregators": "[]",
+   "byzantine": [
+    3,
+    8,
+    10,
+    12,
+    14,
+    19
+   ]
+  }
+ },
+ "byz_labelflip_median": {
+  "script": "byzantine",
+  "config": "experiments/configs/byz_labelflip_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 10.698917150497437,
+  "output_dir": "demo_results/byz_labelflip_median/20261104-172650",
+  "final": {
+   "round": 20,
+   "test_loss": 0.27407685394287107,
+   "test_acc": 0.9231,
+   "deviation": 0.15098467469215393,
+   "elapsed_s": 9.709378480911255
+  },
+  "summary": {
+   "name": "byz_labelflip_median",
+   "output_dir": "demo_results/byz_labelflip_median/20261104-172650",
+   "device": "cpu",
+   "total_communication_bits": 5099776000,
+   "wall_clock_s": 10.681605100631714,
+   "estimated_round_latency": {
+    "compute_s": 0.08033785204988816,
+    "comm_s": 0.7649664000000002,
+    "total_s": 0.8453042520498883,
+    "rounds": 20,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "attack": "None",
+   "data_attack": "label_flip",
+   "aggregator": "Median()",
+   "pre_aggregators": "[]",
+   "byzantine": [
+    3,
+    8,
+    10,
+    12,
+    14,
+    19
+   ]
+  }
+ },
+ "byz_backdoor_mean": {
+  "script": "byzantine",
+  "config": "experiments/configs/byz_backdoor_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 6.2297375202178955,
+  "output_dir": "demo_results/byz_backdoor_mean/20261104-172701",
+  "final": {
+   "round": 20,
+   "test_loss": 0.24149879989624023,
+   "test_acc": 0.9295,
+   "deviation": 0.0,
+   "backdoor_asr": 0.9975609756097561,
+   "elapsed_s": 5.4514312744140625
+  },
+  "summary": {
+   "name": "byz_backdoor_mean",
+   "output_dir": "demo_results/byz_backdoor_mean/20261104-172701",
+   "device": "cpu",
+   "total_communication_bits": 2645508800,
+   "wall_clock_s": 6.217088460922241,
+   "estimated_round_latency": {
+    "compute_s": 0.07345314284984852,
+    "comm_s": 1.1793232,
+    "total_s": 1.2527763428498486,
+    "rounds": 20,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "attack": "Scaling(factor=5.0)",
+   "data_attack": "backdoor",
+   "aggregator": "Average()",
+   "pre_aggregators": "[]",
+   "byzantine": [
+    10,
+    18
+   ]
+  }
+ },
+ "byz_backdoor_clipping": {
+  "script": "byzantine",
+  "config": "experiments/configs/byz_backdoor_mnist.yaml",
+  "overrides": [
+   "name=byz_backdoor_clipping",
+   "pre_aggregators=[{name: clipping, c: 0.5}]"
+  ],
+  "ok": true,
+  "seconds": 5.638418674468994,
+  "output_dir": "demo_results/byz_backdoor_clipping/20261104-172707",
+  "final": {
+   "round": 20,
+   "test_loss": 0.2629657470703125,
+   "test_acc": 0.9229,
+   "deviation": 0.0,
+   "backdoor_asr": 0.34235033259423503,
+   "elapsed_s": 4.8209733963012695
+  },
+  "summary": {
+   "name": "byz_backdoor_clipping",
+   "output_dir": "demo_results/byz_backdoor_clipping/20261104-172707",
+   "device": "cpu",
+   "total_communication_bits": 2645508800,
+   "wall_clock_s": 5.625018358230591,
+   "estimated_round_latency": {
+    "compute_s": 0.06437348870008464,
+    "comm_s": 1.1793232,
+    "total_s": 1.2436966887000847,
+    "rounds": 20,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "attack": "Scaling(factor=5.0)",
+   "data_attack": "backdoor",
+   "aggregator": "Average()",
+   "pre_aggregators": "[Clipping(c=0.5)]",
+   "byzantine": [
+    10,
+    18
+   ]
+  }
+ },
+ "dp_none_mnist": {
+  "script": "dp_fedavg",
+  "config": "experiments/configs/dp_central_mnist.yaml",
+  "overrides": [
+   "name=dp_none_mnist",
+   "dp.noise_multiplier=0.0"
+  ],
+  "ok": true,
+  "seconds": 12.606219291687012,
+  "output_dir": "demo_results/dp_none_mnist/20261104-172713",
+  "final": {
+   "round": 40,
+   "test_loss": 0.2884589424133301,
+   "test_acc": 0.9195,
+   "epsilon": Infinity,
+   "elapsed_s": 11.592443943023682
+  },
+  "summary": {
+   "name": "dp_none_mnist",
+   "output_dir": "demo_results/dp_none_mnist/20261104-172713",
+   "device": "cpu",
+   "total_communication_bits": 1004800000,
+   "wall_clock_s": 12.537292242050171,
+   "estimated_round_latency": {
+    "compute_s": 0.019232862125090833,
+    "comm_s": 0.030143999999999997,
+    "total_s": 0.049376862125090834,
+    "rounds": 40,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "epsilon": Infinity,
+   "dp_mode": "central"
+  }
+ },
+ "dp_central_mnist": {
+  "script": "dp_fedavg",
+  "config": "experiments/configs/dp_central_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 13.358099699020386,
+  "output_dir": "demo_results/dp_central_mnist/20261104-172725",
+  "final": {
+   "round": 40,
+   "test_loss": 0.4266372253417969,
+   "test_acc": 0.8831,
+   "epsilon": 4.363317006527225,
+   "elapsed_s": 12.407803297042847
+  },
+  "summary": {
+   "name": "dp_central_mnist",
+   "output_dir": "demo_results/dp_central_mnist/20261104-172725",
+   "device": "cpu",
+   "total_communication_bits": 1004800000,
+   "wall_clock_s": 13.291710376739502,
+   "estimated_round_latency": {
+    "compute_s": 0.02065626084995529,
+    "comm_s": 0.030143999999999997,
+    "total_s": 0.05080026084995529,
+    "rounds": 40,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "epsilon": 4.363317006527225,
+   "dp_mode": "central"
+  }
+ },
+ "dp_local_mnist": {
+  "script": "dp_fedavg",
+  "config": "experiments/configs/dp_local_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 12.910804271697998,
+  "output_dir": "demo_results/dp_local_mnist/20261104-172739",
+  "final": {
+   "round": 40,
+   "test_loss": 1.7822969848632813,
+   "test_acc": 0.7603,
+   "epsilon": 82.12663110385034,
+   "elapsed_s": 11.822532892227173
+  },
+  "summary": {
+   "name": "dp_local_mnist",
+   "output_dir": "demo_results/dp_local_mnist/20261104-172739",
+   "device": "cpu",
+   "total_communication_bits": 1004800000,
+   "wall_clock_s": 12.843648910522461,
+   "estimated_round_latency": {
+    "compute_s": 0.02887066342500475,
+    "comm_s": 0.030143999999999997,
+    "total_s": 0.05901466342500475,
+    "rounds": 40,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "epsilon": 82.12663110385034,
+   "dp_mode": "local"
+  }
+ },
+ "secagg_mnist": {
+  "script": "secure_aggregation",
+  "config": "experiments/configs/secagg_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 51.500218868255615,
+  "output_dir": "demo_results/secagg_mnist/20261104-175358",
+  "final": {
+   "round": 15,
+   "test_loss": 0.04661793928146362,
+   "test_acc": 0.9844,
+   "survivors": 9,
+   "secagg_max_error": 2.906235749833286e-07,
+   "elapsed_s": 50.38991689682007
+  },
+  "summary": {
+   "name": "secagg_mnist",
+   "output_dir": "demo_results/secagg_mnist/20261104-175358",
+   "device": "cpu",
+   "total_communication_bits": 582688800,
+   "wall_clock_s": 51.459365367889404,
+   "estimated_round_latency": {
+    "compute_s": 0.8152537294666521,
+    "comm_s": 0.24394335999999991,
+    "total_s": 1.059197089466652,
+    "rounds": 15,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "protocol": "secagg"
+  }
+ },
+ "secaggplus_mnist": {
+  "script": "secure_aggregation",
+  "config": "experiments/configs/secaggplus_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 47.73236799240112,
+  "output_dir": "demo_results/secaggplus_mnist/20261104-175449",
+  "final": {
+   "round": 15,
+   "test_loss": 0.04661793928146362,
+   "test_acc": 0.9844,
+   "survivors": 9,
+   "secagg_max_error": 2.906235749833286e-07,
+   "elapsed_s": 46.28580594062805
+  },
+  "summary": {
+   "name": "secaggplus_mnist",
+   "output_dir": "demo_results/secaggplus_mnist/20261104-175449",
+   "device": "cpu",
+   "total_communication_bits": 572292000,
+   "wall_clock_s": 47.7135112285614,
+   "estimated_round_latency": {
+    "compute_s": 0.6574332961999365,
+    "comm_s": 0.24044336,
+    "total_s": 0.8978766561999365,
+    "rounds": 15,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "protocol": "secagg+"
+  }
+ },
+ "lightsecagg_mnist": {
+  "script": "secure_aggregation",
+  "config": "experiments/configs/lightsecagg_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 52.482800006866455,
+  "output_dir": "demo_results/lightsecagg_mnist/20261109-233041",
+  "final": {
+   "round": 15,
+   "test_loss": 0.04661793928146362,
+   "test_acc": 0.9844,
+   "survivors": 9,
+   "secagg_max_error": 2.906235749833286e-07,
+   "elapsed_s": 49.96828007698059
+  },
+  "summary": {
+   "name": "lightsecagg_mnist",
+   "output_dir": "demo_results/lightsecagg_mnist/20261109-233041",
+   "device": "cpu",
+   "total_communication_bits": 1685911800,
+   "wall_clock_s": 50.85382962226868,
+   "estimated_round_latency": {
+    "compute_s": 0.5747854337332683,
+    "comm_s": 0.7037545600000001,
+    "total_s": 1.2785399937332684,
+    "rounds": 15,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "protocol": "lightsecagg"
+  }
+ },
+ "secagg_dp_mnist": {
+  "script": "secure_aggregation",
+  "config": "experiments/configs/secagg_dp_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 21.91841411590576,
+  "output_dir": "demo_results/secagg_dp_mnist/20261104-175626",
+  "final": {
+   "round": 30,
+   "test_loss": 0.4578432647705078,
+   "test_acc": 0.8773,
+   "survivors": 20,
+   "secagg_max_error": 1.5832483768463135e-07,
+   "epsilon": 8.939317955607045,
+   "elapsed_s": 20.215505361557007
+  },
+  "summary": {
+   "name": "secagg_dp_mnist",
+   "output_dir": "demo_results/secagg_dp_mnist/20261104-175626",
+   "device": "cpu",
+   "total_communication_bits": 355608000,
+   "wall_clock_s": 21.854655504226685,
+   "estimated_round_latency": {
+    "compute_s": 0.23321664223346186,
+    "comm_s": 0.03481872,
+    "total_s": 0.26803536223346186,
+    "rounds": 30,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "protocol": "secagg+"
+  }
+ },
+ "secagg_scaling": {
+  "script": "secagg_scaling",
+  "config": "experiments/configs/secagg_scaling.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 32.87375044822693,
+  "output_dir": "demo_results/secagg_scaling/20261109-233132",
+  "final": {},
+  "summary": {
+   "name": "secagg_scaling",
+   "output_dir": "demo_results/secagg_scaling/20261109-233132",
+   "device": "cpu",
+   "total_communication_bits": 0,
+   "wall_clock_s": 32.86864185333252,
+   "estimated_round_latency": {
+    "compute_s": 0.0,
+    "comm_s": 0.0,
+    "total_s": 0.0,
+    "rounds": 0
+   },
+   "rows": 15
+  }
+ },
+ "privacy_attacks_mnist": {
+  "script": "privacy_attacks",
+  "config": "experiments/configs/privacy_attacks_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 34.876102685928345,
+  "output_dir": "demo_results/privacy_attacks_mnist/20261111-205419",
+  "final": {},
+  "summary": {
+   "name": "privacy_attacks_mnist",
+   "output_dir": "demo_results/privacy_attacks_mnist/20261111-205419",
+   "device": "cpu",
+   "total_communication_bits": 4296320,
+   "wall_clock_s": 33.364173889160156,
+   "estimated_round_latency": {
+    "compute_s": 30.74355922099994,
+    "comm_s": 0.0429632,
+    "total_s": 30.78652242099994,
+    "rounds": 1,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "dp_mode": "local",
+   "psnr_individual": {
+    "no DP": 79.7970372317785,
+    "sigma=0.001": 18.678241990059096,
+    "sigma=0.01": 4.120753505298283,
+    "sigma=0.1": 3.2838526771383405
+   },
+   "psnr_aggregate": {
+    "no DP": {
+     "0": 8.57477223106264,
+     "1": 9.199783911259738,
+     "2": 10.937359367038678,
+     "3": 13.31840132242606,
+     "4": 16.772409467337603,
+     "5": 16.364306775720017,
+     "6": 17.1857912684992,
+     "7": 16.99970728517485,
+     "8": 16.403529412897143,
+     "9": 16.549386970524015
+    },
+    "sigma=0.001": {
+     "0": 5.252045865014421,
+     "1": 5.7026861249739245,
+     "2": 8.810099610296767,
+     "3": 8.88656060805535,
+     "4": 7.087738964827897,
+     "5": 6.968649805729024,
+     "6": 7.070112327033864,
+     "7": 6.955023774747015,
+     "8": 6.655865065115315,
+     "9": 6.887364534161997
+    },
+    "sigma=0.01": {
+     "0": 3.590771202391872,
+     "1": 3.9174902471975157,
+     "2": 3.7360222635953164,
+     "3": 3.733429887734273,
+     "4": 3.9662646572911124,
+     "5": 3.9635192534220147,
+     "6": 3.959764669599293,
+     "7": 3.9682994331980637,
+     "8": 3.9219472942381812,
+     "9": 4.0798947795600675
+    },
+    "sigma=0.1": {
+     "0": 3.137178084492218,
+     "1": 3.5583798279063887,
+     "2": 3.59325905881129,
+     "3": 3.662921880607673,
+     "4": 3.4671424661510746,
+     "5": 3.4863863124520735,
+     "6": 3.321680771490225,
+     "7": 3.4555391537519977,
+     "8": 3.6622775424411778,
+     "9": 3.6114111545933096
+    }
+   }
+  }
+ },
+ "sweep_byzantine_mnist": {
+  "script": "sweep",
+  "config": "experiments/configs/sweep_byzantine_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 456.8151686191559,
+  "output_dir": "demo_results/sweep_byzantine_mnist/20261104-173515",
+  "final": null,
+  "summary": {
+   "output_dir": "demo_results/sweep_byzantine_mnist/20261104-173515"
+  }
+ },
+ "sweep_byzantine_noniid_mnist": {
+  "script": "sweep",
+  "config": "experiments/configs/sweep_byzantine_noniid_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 331.6079592704773,
+  "output_dir": "demo_results/sweep_byzantine_noniid_mnist/20261104-174352",
+  "final": null,
+  "summary": {
+   "output_dir": "demo_results/sweep_byzantine_noniid_mnist/20261104-174352"
+  }
+ },
+ "sweep_byzantine_noniid_nnm_mnist": {
+  "script": "sweep",
+  "config": "experiments/configs/sweep_byzantine_noniid_nnm_mnist.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 367.9598014354706,
+  "output_dir": "demo_results/sweep_byzantine_noniid_nnm_mnist/20261104-175648",
+  "final": null,
+  "summary": {
+   "output_dir": "demo_results/sweep_byzantine_noniid_nnm_mnist/20261104-175648"
+  }
+ },
+ "lightsecagg_mnist_dropouts": {
+  "script": "secure_aggregation",
+  "config": "experiments/configs/lightsecagg_mnist_dropouts.yaml",
+  "overrides": [],
+  "ok": true,
+  "seconds": 62.946373462677,
+  "output_dir": "demo_results/lightsecagg_mnist_dropouts/20261110-015639",
+  "final": {
+   "round": 15,
+   "test_loss": 0.04590149478912354,
+   "test_acc": 0.9849,
+   "survivors": 9,
+   "secagg_max_error": 2.8105245696171365e-07,
+   "recovery_responses": 7,
+   "elapsed_s": 60.23023772239685
+  },
+  "summary": {
+   "name": "lightsecagg_mnist_dropouts",
+   "output_dir": "demo_results/lightsecagg_mnist_dropouts/20261110-015639",
+   "device": "cpu",
+   "total_communication_bits": 1950973080,
+   "wall_clock_s": 61.22223782539368,
+   "estimated_round_latency": {
+    "compute_s": 0.730140556400056,
+    "comm_s": 0.8202441599999999,
+    "total_s": 1.550384716400056,
+    "rounds": 15,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "protocol": "lightsecagg"
+  }
+ },
+ "privacy_attacks_mnist_central": {
+  "script": "privacy_attacks",
+  "config": "experiments/configs/privacy_attacks_mnist.yaml",
+  "overrides": [
+   "name=privacy_attacks_mnist_central",
+   "privacy.dp_mode=central"
+  ],
+  "ok": true,
+  "seconds": 32.44317674636841,
+  "output_dir": "demo_results/privacy_attacks_mnist_central/20261111-205452",
+  "final": {},
+  "summary": {
+   "name": "privacy_attacks_mnist_central",
+   "output_dir": "demo_results/privacy_attacks_mnist_central/20261111-205452",
+   "device": "cpu",
+   "total_communication_bits": 4296320,
+   "wall_clock_s": 32.437416315078735,
+   "estimated_round_latency": {
+    "compute_s": 30.55147565699997,
+    "comm_s": 0.0429632,
+    "total_s": 30.594438856999968,
+    "rounds": 1,
+    "uplink_mbps": 10.0,
+    "downlink_mbps": 50.0
+   },
+   "dp_mode": "central",
+   "psnr_individual": {
+    "no DP": 79.7970372317785,
+    "sigma=0.001": 79.7970372317785,
+    "sigma=0.01": 79.7970372317785,
+    "sigma=0.1": 79.7970372317785
+   },
+   "psnr_aggregate": {
+    "no DP": {
+     "0": 8.57477223106264,
+     "1": 9.199783911259738,
+     "2": 10.937359367038678,
+     "3": 13.31840132242606,
+     "4": 16.772409467337603,
+     "5": 16.364306775720017,
+     "6": 17.1857912684992,
+     "7": 16.99970728517485,
+     "8": 16.403529412897143,
+     "9": 16.549386970524015
+    },
+    "sigma=0.001": {
+     "0": 8.424870211961318,
+     "1": 8.225394029857597,
+     "2": 8.505790706897143,
+     "3": 9.977386041184795,
+     "4": 10.782708336776828,
+     "5": 11.330030940401375,
+     "6": 11.889990078797862,
+     "7": 11.143190522150963,
+     "8": 9.923247529611904,
+     "9": 11.303013540008678
+    },
+    "sigma=0.01": {
+     "0": 3.497183376624535,
+     "1": 4.225134149155527,
+     "2": 5.3787131215184205,
+     "3": 3.7718277143202905,
+     "4": 4.69215529533032,
+     "5": 4.453837708302454,
+     "6": 4.46299466410039,
+     "7": 4.644484993794439,
+     "8": 4.139075182120585,
+     "9": 4.754657447892638
+    },
+    "sigma=0.1": {
+     "0": 3.6651404947020816,
+     "1": 3.9133797136368815,
+     "2": 3.3553137691287587,
+     "3": 3.4855068518796353,
+     "4": 3.5181265191562847,
+     "5": 4.047523680059445,
+     "6": 3.517026794697907,
+     "7": 3.8260304215815495,
+     "8": 3.780946489260846,
+     "9": 3.09366421363209
+    }
+   }
+  }
+ }
+}

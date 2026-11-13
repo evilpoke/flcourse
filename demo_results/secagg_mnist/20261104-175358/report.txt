@@ -1,0 +1,48 @@
+EXPERIMENT  secagg_mnist
+output      demo_results/secagg_mnist/20261104-175358
+device      cpu (4 threads)
+wall clock  51.46 s (sequential simulation)
+
+FINAL METRICS (last evaluated round)
+  round            15
+  test_loss        0.0466
+  test_acc         0.9844
+  survivors        9
+  secagg_max_error 0.0000
+  elapsed_s        50.3899
+
+protocol: secagg
+
+parameters: SecAgg(SecAggPlusParams(num_shares=1.0, reconstruction_threshold=0.5, max_weight=1.0, clipping_range=1.0, quantization_range=4194304, modulus_range=4294967296))
+last round: {'num_shares': 10, 'threshold': 5, 'U1': 10, 'U2': 10, 'U3': 9, 'U4': 9, 'clipped_fraction': 0.0}
+max |secure mean - plain mean| over the last round: 2.91e-07 (quantisation step = 4.8e-07)
+
+COMMUNICATION   (total 72.84 MB over 15 round(s))
+label                                    direction       msgs  total      per round  per msg  
+----------------------------------------------------------------------------------------------
+download: global model                   server->client   150   37.02 MB    2.47 MB  246.82 kB
+secagg/0 setup: config                   server->client   150   15.00 kB    1.00 kB      100 B
+secagg/0 setup: public keys              client->server   150   64.50 kB    4.30 kB      430 B
+secagg/1 share keys: encrypted shares    client->server   150  827.55 kB   55.17 kB    5.52 kB
+secagg/1 share keys: public keys         server->client   150  646.50 kB   43.10 kB    4.31 kB
+secagg/2 masked input: encrypted shares  server->client   150  827.55 kB   55.17 kB    5.52 kB
+secagg/2 masked input: masked vector     client->server   135   33.32 MB    2.22 MB  246.83 kB
+secagg/3 unmask: secret shares           client->server   135  108.27 kB    7.22 kB      802 B
+secagg/3 unmask: survivor lists          server->client   135    1.35 kB       90 B       10 B
+
+COMPUTATION   ('avg/round' = average over parties, 'parallel/round' = max over parties = concurrent clients)
+label                           who     calls  total    per call  avg/round  parallel/round
+-------------------------------------------------------------------------------------------
+client: local update            client    150  38.88 s  259.2 ms   259.2 ms        297.1 ms
+secagg/0 setup [client]         client    150  63.5 ms    423 us     423 us          647 us
+secagg/0 setup [server]         server     15   808 us     54 us      54 us           54 us
+secagg/1 share keys [client]    client    150   2.21 s   14.7 ms    14.7 ms         18.8 ms
+secagg/2 masked input [client]  client    135   1.38 s   10.2 ms    10.2 ms         12.0 ms
+secagg/2 masked input [server]  server    135  10.9 ms     81 us     726 us          726 us
+secagg/3 unmask [client]        client    135   465 us      3 us       3 us            9 us
+secagg/3 unmask [server]        server     15   3.46 s  230.6 ms   230.6 ms        230.6 ms
+server: evaluate                server     15   3.83 s  255.4 ms   255.4 ms        255.4 ms
+
+ESTIMATED ROUND LATENCY with concurrent clients (uplink 10 Mbit/s, downlink 50 Mbit/s): compute 815.3 ms + communication 243.9 ms = 1.06 s per round
+
+figures: convergence.png, communication.png, computation.png

@@ -1,0 +1,14 @@
+# "A little is enough" by 4 colluding clients vs. trimmed mean with nearest-neighbour mixing.
+# Compare with:  --set aggregator.name=mean   or   --set pre_aggregators=[]
+name: byz_alie_trmean_nnm
+seed: 0
+data: {dataset: mnist, partition: dirichlet, alpha: 1.0}
+model: {name: mlp}
+fl: {num_clients: 20, clients_per_round: 20, rounds: 20, upload: delta}
+client: {local_steps: 20, batch_size: 32, lr: 0.05}
+attack:
+  num_byzantine: 4
+  vector: {name: alie, tau: 1.5}
+aggregator: {name: trimmed_mean}       # f is taken from attack.num_byzantine
+pre_aggregators:
+  - {name: nnm}

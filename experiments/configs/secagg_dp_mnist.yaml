@@ -1,0 +1,20 @@
+# Distributed DP + SecAgg+: each client adds 1/m of the Gaussian noise before masking,
+# the server only ever sees the noisy SUM.
+name: secagg_dp_mnist
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: logreg}
+fl: {num_clients: 100, clients_per_round: 20, rounds: 30, upload: delta}
+client: {local_steps: 10, batch_size: 32, lr: 0.1}
+aggregator: {name: mean}
+secagg:
+  protocol: secagg+
+  num_shares: 7
+  reconstruction_threshold: 4
+  clipping_range: 1.0
+  dropout_rate: 0.0
+dp:
+  mode: distributed
+  clip: 0.5
+  noise_multiplier: 1.0
+  delta: 1.0e-5

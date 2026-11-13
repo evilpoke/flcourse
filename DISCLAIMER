@@ -1,0 +1,9 @@
+Source code used:
+
+flcourse/secagg/flwr/ contains source files taken from the fairly robust implementation from Flower
+(https://github.com/flwrlabs/flower) (Apache License)
+
+flcourse/secagg/secaggplus.py re-implements the SecAgg+ client (secaggplus_mod.py) and
+server (secaggplus_workflow.py) logic of Flower as a single-process simulation; the
+checks and protocol steps follow Flower's code and are marked as such. I used claude for that
+

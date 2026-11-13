@@ -1,0 +1,15 @@
+# LightSecAgg (So et al. 2022): MDS-coded masks, one-shot recovery of the aggregate mask.
+name: lightsecagg_mnist
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: lenet5}
+fl: {num_clients: 20, clients_per_round: 10, rounds: 15, upload: delta}
+client: {local_epochs: 1, batch_size: 32, lr: 0.05}
+aggregator: {name: mean}
+secagg:
+  protocol: lightsecagg
+  privacy_threshold: 0.3         # T = 30% of the round's clients may collude with the server
+  dropout_tolerance: 0.2         # D = 20% may drop out  ->  U = N - D survivors needed
+  clipping_range: 1.0
+  dropout_rate: 0.1
+  dropout_stage: masked_input

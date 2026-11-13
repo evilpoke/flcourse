@@ -1,0 +1,37 @@
+EXPERIMENT  byz_backdoor_clipping
+output      demo_results/byz_backdoor_clipping/20261104-172707
+device      cpu (4 threads)
+wall clock  5.63 s (sequential simulation)
+
+FINAL METRICS (last evaluated round)
+  round            20
+  test_loss        0.2630
+  test_acc         0.9229
+  deviation        0.0000
+  backdoor_asr     0.3424
+  elapsed_s        4.8210
+
+attack: Scaling(factor=5.0)
+data_attack: backdoor
+aggregator: Average()
+pre_aggregators: [Clipping(c=0.5)]
+byzantine: [10, 18]
+
+COMMUNICATION   (total 330.69 MB over 20 round(s))
+label                   direction          msgs  total      per round  per msg  
+--------------------------------------------------------------------------------
+collusion/vector        client->colluders    15   11.95 MB  919.43 kB  796.84 kB
+download: global model     server->client   200  159.37 MB    7.97 MB  796.84 kB
+upload: delta              client->server   200  159.37 MB    7.97 MB  796.84 kB
+
+COMPUTATION   ('avg/round' = average over parties, 'parallel/round' = max over parties = concurrent clients)
+label                           who     calls  total     per call  avg/round  parallel/round
+--------------------------------------------------------------------------------------------
+attack: craft byzantine vector  client     13    6.3 ms    481 us     481 us          481 us
+client: local update            client    200    3.59 s   18.0 ms    18.0 ms         22.5 ms
+server: aggregate               server     20   52.2 ms    2.6 ms     2.6 ms          2.6 ms
+server: evaluate                server     20  779.8 ms   39.0 ms    39.0 ms         39.0 ms
+
+ESTIMATED ROUND LATENCY with concurrent clients (uplink 10 Mbit/s, downlink 50 Mbit/s): compute 64.4 ms + communication 1.18 s = 1.24 s per round
+
+figures: convergence.png, communication.png, computation.png

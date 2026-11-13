@@ -1,0 +1,37 @@
+EXPERIMENT  byz_ipm_fltrust
+output      demo_results/byz_ipm_fltrust/20261104-172640
+device      cpu (4 threads)
+wall clock  10.01 s (sequential simulation)
+
+FINAL METRICS (last evaluated round)
+  round            20
+  test_loss        0.2374
+  test_acc         0.9253
+  deviation        0.1525
+  elapsed_s        9.2198
+
+attack: InnerProductManipulation(tau=5.0)
+data_attack: None
+aggregator: FLTrust()
+pre_aggregators: []
+byzantine: [3, 8, 10, 12, 14, 19]
+
+COMMUNICATION   (total 733.09 MB over 20 round(s))
+label                   direction          msgs  total      per round  per msg  
+--------------------------------------------------------------------------------
+collusion/vector        client->colluders   120   95.62 MB    4.78 MB  796.84 kB
+download: global model     server->client   400  318.74 MB   15.94 MB  796.84 kB
+upload: delta              client->server   400  318.74 MB   15.94 MB  796.84 kB
+
+COMPUTATION   ('avg/round' = average over parties, 'parallel/round' = max over parties = concurrent clients)
+label                           who     calls  total     per call  avg/round  parallel/round
+--------------------------------------------------------------------------------------------
+attack: craft byzantine vector  client     20   17.9 ms    893 us     893 us          893 us
+client: local update            client    400    7.47 s   18.7 ms    18.7 ms         29.1 ms
+server: aggregate               server     20  277.0 ms   13.9 ms    13.9 ms         13.9 ms
+server: evaluate                server     20  431.8 ms   21.6 ms    21.6 ms         21.6 ms
+server: root update (FLTrust)   server     20  367.7 ms   18.4 ms    18.4 ms         18.4 ms
+
+ESTIMATED ROUND LATENCY with concurrent clients (uplink 10 Mbit/s, downlink 50 Mbit/s): compute 83.8 ms + communication 1.40 s = 1.49 s per round
+
+figures: convergence.png, communication.png, computation.png

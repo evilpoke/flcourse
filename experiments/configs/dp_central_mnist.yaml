@@ -1,0 +1,18 @@
+# Client-level DP with a trusted server (DP-FedAvg, McMahan et al. 2018).
+# Every client clips its update to norm C; the server adds N(0, (sigma C)^2) to the sum.
+name: dp_central_mnist
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: logreg}
+fl:
+  num_clients: 200
+  clients_per_round: 50          # sampling rate q = 0.25
+  rounds: 40
+  upload: delta
+  server_lr: 1.0
+client: {local_steps: 10, batch_size: 32, lr: 0.1}
+dp:
+  mode: central                  # central | local | distributed
+  clip: 0.5                      # C
+  noise_multiplier: 2.0          # sigma  (sigma=1: eps~13, acc~0.91 | sigma=2: eps~4.4, acc~0.88)
+  delta: 1.0e-5

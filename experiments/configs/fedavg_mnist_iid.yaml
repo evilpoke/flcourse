@@ -1,0 +1,20 @@
+# FedAvg on MNIST, IID split.  python experiments/fedavg.py --config experiments/configs/fedavg_mnist_iid.yaml
+name: fedavg_mnist_iid
+seed: 0
+device: auto                 # GPU if available, otherwise CPU
+data:
+  dataset: mnist
+  partition: iid
+model:
+  name: cnn                  # 106k parameters, fine on a CPU
+fl:
+  num_clients: 20
+  clients_per_round: 10
+  rounds: 20
+  upload: model              # model | delta | gradient
+client:
+  local_epochs: 1
+  batch_size: 32
+  lr: 0.05
+aggregator:
+  name: mean

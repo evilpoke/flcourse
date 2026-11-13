@@ -1,0 +1,36 @@
+EXPERIMENT  dp_central_mnist
+output      demo_results/dp_central_mnist/20261104-172725
+device      cpu (4 threads)
+wall clock  13.29 s (sequential simulation)
+
+FINAL METRICS (last evaluated round)
+  round            40
+  test_loss        0.4266
+  test_acc         0.8831
+  epsilon          4.3633
+  elapsed_s        12.4078
+
+epsilon: 4.363317006527225
+dp_mode: central
+
+DP: mode=central, C=0.5, sigma=2.0, delta=1e-05, cohort m=50 of N=200 (q=0.250)
+final epsilon = 4.363  ((4.36, 1e-05)-DP at the client level)
+client update norms before clipping: median 0.646, 90th percentile 0.911  -> fraction clipped 0.97
+
+COMMUNICATION   (total 125.60 MB over 40 round(s))
+label                   direction       msgs  total     per round  per msg 
+---------------------------------------------------------------------------
+download: global model  server->client  2000  62.80 MB    1.57 MB  31.40 kB
+upload: delta           client->server  2000  62.80 MB    1.57 MB  31.40 kB
+
+COMPUTATION   ('avg/round' = average over parties, 'parallel/round' = max over parties = concurrent clients)
+label                 who     calls  total     per call  avg/round  parallel/round
+----------------------------------------------------------------------------------
+client: DP            client   2000  107.2 ms     54 us      54 us          139 us
+client: local update  client   2000    8.63 s    4.3 ms     4.3 ms          9.3 ms
+server: aggregate     server     40   34.5 ms    863 us     863 us          863 us
+server: evaluate      server     40  416.1 ms   10.4 ms    10.4 ms         10.4 ms
+
+ESTIMATED ROUND LATENCY with concurrent clients (uplink 10 Mbit/s, downlink 50 Mbit/s): compute 20.7 ms + communication 30.1 ms = 50.8 ms per round
+
+figures: convergence.png, communication.png, computation.png

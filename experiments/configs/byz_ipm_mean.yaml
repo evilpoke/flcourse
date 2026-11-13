@@ -1,0 +1,11 @@
+# Inner product manipulation by 4 of 20 colluding clients against plain averaging (no defense).
+name: byz_ipm_mean
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: mlp}
+fl: {num_clients: 20, clients_per_round: 20, rounds: 20, upload: delta}
+client: {local_steps: 20, batch_size: 32, lr: 0.05}
+attack:
+  num_byzantine: 4
+  vector: {name: ipm, tau: 5.0}        # inner product manipulation: -5 x mean of the colluders' updates
+aggregator: {name: mean}

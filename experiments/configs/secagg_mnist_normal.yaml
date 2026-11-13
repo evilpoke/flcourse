@@ -1,0 +1,17 @@
+# SecAgg (Bonawitz et al. 2017) = SecAgg+ on the complete graph, Flower's primitives.
+
+name: secagg_mnist
+seed: 0
+data: {dataset: mnist, partition: iid}
+model: {name: lenet5}
+fl: {num_clients: 20, clients_per_round: 20, rounds: 15, upload: model}
+client: {local_epochs: 1, batch_size: 32, lr: 0.05}
+aggregator: {name: mean}         # nothing else is possible: the server only learns the sum
+secagg:
+  protocol: secagg
+  reconstruction_threshold: 0.5  # t = 50% of the clients of the round
+  clipping_range: 1.0            # updates are clipped to [-1, 1] before quantisation
+  quantization_range: 4194304    # 2^22 levels
+  modulus_range: 4294967296      # masks live in Z_{2^32}
+  dropout_rate: 0.1              # 10% of the clients go offline ...
+  dropout_stage: masked_input    # ... after sharing their keys (the classic dropout case)

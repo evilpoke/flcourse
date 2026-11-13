@@ -1,0 +1,36 @@
+EXPERIMENT  byz_alie_trmean_nnm
+output      demo_results/byz_alie_trmean_nnm/20261104-172629
+device      cpu (4 threads)
+wall clock  11.06 s (sequential simulation)
+
+FINAL METRICS (last evaluated round)
+  round            20
+  test_loss        0.2727
+  test_acc         0.9185
+  deviation        0.0000
+  elapsed_s        10.2899
+
+attack: ALittleIsEnough(tau=1.5)
+data_attack: None
+aggregator: TrimmedMean(f=4)
+pre_aggregators: [NNM(f=4)]
+byzantine: [9, 11, 14, 16]
+
+COMMUNICATION   (total 701.22 MB over 20 round(s))
+label                   direction          msgs  total      per round  per msg  
+--------------------------------------------------------------------------------
+collusion/vector        client->colluders    80   63.75 MB    3.19 MB  796.84 kB
+download: global model     server->client   400  318.74 MB   15.94 MB  796.84 kB
+upload: delta              client->server   400  318.74 MB   15.94 MB  796.84 kB
+
+COMPUTATION   ('avg/round' = average over parties, 'parallel/round' = max over parties = concurrent clients)
+label                           who     calls  total     per call  avg/round  parallel/round
+--------------------------------------------------------------------------------------------
+attack: craft byzantine vector  client     20  615.3 ms   30.8 ms    30.8 ms         30.8 ms
+client: local update            client    400    7.40 s   18.5 ms    18.5 ms         24.5 ms
+server: aggregate               server     20    1.39 s   69.3 ms    69.3 ms         69.3 ms
+server: evaluate                server     20  417.0 ms   20.8 ms    20.8 ms         20.8 ms
+
+ESTIMATED ROUND LATENCY with concurrent clients (uplink 10 Mbit/s, downlink 50 Mbit/s): compute 145.4 ms + communication 1.40 s = 1.55 s per round
+
+figures: convergence.png, communication.png, computation.png

@@ -1,0 +1,13 @@
+# Cost of one secure aggregation vs. number of clients (no training).
+#   python experiments/secagg_scaling.py --config experiments/configs/secagg_scaling.yaml
+name: secagg_scaling
+seed: 0
+scaling:
+  num_clients: [5, 10, 20, 30, 40]
+  dim: 20000                     # length of every client's vector
+  dropout_rate: 0.1
+  protocols:
+    - {protocol: secagg, reconstruction_threshold: 0.5}
+    - {protocol: secagg+, num_shares: 7, reconstruction_threshold: 4}
+    - {protocol: lightsecagg, privacy_threshold: 0.3, dropout_tolerance: 0.2}
+network: {uplink_mbps: 10.0, downlink_mbps: 50.0}
